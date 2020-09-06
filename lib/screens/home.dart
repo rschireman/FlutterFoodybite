@@ -13,7 +13,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildSearchBar(context),
+      appBar: AppBar(
+        title: const Text("Shake to Select"),
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
         child: ListView(
@@ -27,10 +29,6 @@ class Home extends StatelessWidget {
             SizedBox(height: 10.0),
             buildCategoryList(context),
             SizedBox(height: 20.0),
-            buildCategoryRow('Friends', context),
-            SizedBox(height: 10.0),
-            buildFriendsList(),
-            SizedBox(height: 30.0),
           ],
         ),
       ),
@@ -132,28 +130,29 @@ class Home extends StatelessWidget {
     );
   }
 
-  buildFriendsList() {
-    return Container(
-      height: 50.0,
-      child: ListView.builder(
-        primary: false,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: friends == null ? 0 : friends.length,
-        itemBuilder: (BuildContext context, int index) {
-          String img = friends[index];
+//   buildFriendsList() {
+//     return Container(
+//       height: 50.0,
+//       child: ListView.builder(
+//         primary: false,
+//         scrollDirection: Axis.horizontal,
+//         shrinkWrap: true,
+//         itemCount: friends == null ? 0 : friends.length,
+//         itemBuilder: (BuildContext context, int index) {
+//           String img = friends[index];
 
-          return Padding(
-            padding: EdgeInsets.only(right: 5.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage(
-                img,
-              ),
-              radius: 25.0,
-            ),
-          );
-        },
-      ),
-    );
-  }
+//           return Padding(
+//             padding: EdgeInsets.only(right: 5.0),
+//             child: CircleAvatar(
+//               backgroundImage: AssetImage(
+//                 img,
+//               ),
+//               radius: 25.0,
+//             ),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
 }
