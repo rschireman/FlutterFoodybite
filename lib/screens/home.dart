@@ -68,22 +68,22 @@ class Home extends StatelessWidget {
     );
   }
 
-  buildSearchBar(BuildContext context) {
-    return PreferredSize(
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: Platform.isAndroid ? 30.0 : 50.0,
-          left: 10.0,
-          right: 10.0,
-        ),
-        child: SearchCard(),
-      ),
-      preferredSize: Size(
-        MediaQuery.of(context).size.width,
-        60.0,
-      ),
-    );
-  }
+  // buildSearchBar(BuildContext context) {
+  //   return PreferredSize(
+  //     child: Padding(
+  //       padding: EdgeInsets.only(
+  //         top: Platform.isAndroid ? 30.0 : 50.0,
+  //         left: 10.0,
+  //         right: 10.0,
+  //       ),
+  //       child: SearchCard(),
+  //     ),
+  //     preferredSize: Size(
+  //       MediaQuery.of(context).size.width,
+  //       60.0,
+  //     ),
+  //   );
+  // }
 
   buildCategoryList(BuildContext context) {
     return Container(

@@ -28,31 +28,31 @@ class _MainScreenState extends State<MainScreen> {
         children: List.generate(5, (index) => Home()),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            SizedBox(width: 7),
-            buildTabIcon(0),
-            buildTabIcon(1),
-            buildTabIcon(2),
-            buildTabIcon(3),
-            buildTabIcon(4),
-            SizedBox(width: 7),
-          ],
-        ),
+        // child: Row(
+        //   mainAxisSize: MainAxisSize.max,
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   children: <Widget>[
+        //     SizedBox(width: 7),
+        //     buildTabIcon(0),
+        //     buildTabIcon(1),
+        //     buildTabIcon(2),
+        //     buildTabIcon(3),
+        //     buildTabIcon(4),
+        //     SizedBox(width: 7),
+        //   ],
+        // ),
         color: Theme.of(context).primaryColor,
         shape: CircularNotchedRectangle(),
       ),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        elevation: 10.0,
-        child: Icon(
-          Icons.add,
-        ),
-        onPressed: () => _pageController.jumpToPage(2),
-      ),
+      // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   elevation: 10.0,
+      //   child: Icon(
+      //     Icons.add,
+      //   ),
+      //   onPressed: () => _pageController.jumpToPage(2),
+      // ),
     );
   }
 
@@ -78,27 +78,28 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  buildTabIcon(int index) {
-    if (index == 2) {
-      return IconButton(
-        icon: Icon(
-          icons[index],
-          size: 24.0,
-          color: Colors.transparent,
-        ),
-        onPressed: null,
-      );
-    } else {
-      return IconButton(
-        icon: Icon(
-          icons[index],
-          size: 24.0,
-        ),
-        color: _page == index
-            ? Theme.of(context).accentColor
-            : Theme.of(context).textTheme.caption.color,
-        onPressed: () => _pageController.jumpToPage(index),
-      );
-    }
-  }
+//   buildTabIcon(int index) {
+//     if (index == 2) {
+//       return IconButton(
+//         icon: Icon(
+//           icons[index],
+//           size: 24.0,
+//           color: Colors.transparent,
+//         ),
+//         onPressed: null,
+//       );
+//     } else {
+//       return IconButton(
+//         icon: Icon(
+//           icons[index],
+//           size: 24.0,
+//         ),
+//         color: _page == index
+//             ? Theme.of(context).accentColor
+//             : Theme.of(context).textTheme.caption.color,
+//         onPressed: () => _pageController.jumpToPage(index),
+//       );
+//     }
+//   }
+// }
 }
