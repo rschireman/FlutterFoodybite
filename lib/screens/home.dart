@@ -35,7 +35,6 @@ class Home extends StatelessWidget {
                   await jsonDecode(listofRestaurants);
 
               var strippedList = decodedList['businesses'];
-              var restaruantImages = decodedList['image_url'];
 
               for (var restaurant in strippedList) {
                 // print(restaurant);
