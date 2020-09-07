@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 
@@ -10,9 +12,9 @@ int radius = 40000;
 
 Future getListofRestaurants(baseurl, radius) async {
   print("Getting List of Destinations");
-  final Geolocator geolocator = Geolocator();
-  Position position = await geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.best);
+  Position position =
+      await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
   Position _currentPosition = position;
 
   print(radius);
