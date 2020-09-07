@@ -34,7 +34,9 @@ class Home extends StatelessWidget {
                 onPressed: () async {
                   Directory tempdir = await getTemporaryDirectory();
                   String tempdirPath = tempdir.path;
+                  print(tempdirPath);
                   final restarauntData = File('$tempdirPath/data.txt');
+                  final Map data = {};
 
                   var listofRestaurants =
                       await getListofRestaurants(baseurl, radius);
@@ -46,14 +48,13 @@ class Home extends StatelessWidget {
 
                   for (var restaurant in strippedList) {
                     print(restaurant['name']);
+                    data[restaurant['name']] = restaurant['image_url'];
                   }
-                  for (var image in strippedList) {
-                    print(image['image_url']);
-                  }
-                  for (var item in strippedList) {
-                    restarauntData
-                        .writeAsString(item['name'] + ',' + item['image_url']);
-                  }
+                  print(data);
+
+                  data.forEach((key, value) {
+                    restarauntData.writeAsString(key + ': ' + value);
+                  });
                 })
           ],
         ),
@@ -82,23 +83,6 @@ class Home extends StatelessWidget {
       ],
     );
   }
-
-  // buildSearchBar(BuildContext context) {
-  //   return PreferredSize(
-  //     child: Padding(
-  //       padding: EdgeInsets.only(
-  //         top: Platform.isAndroid ? 30.0 : 50.0,
-  //         left: 10.0,
-  //         right: 10.0,
-  //       ),
-  //       child: SearchCard(),
-  //     ),
-  //     preferredSize: Size(
-  //       MediaQuery.of(context).size.width,
-  //       60.0,
-  //     ),
-  //   );
-  // }
 
   buildCategoryList(BuildContext context) {
     return Container(
@@ -144,30 +128,4 @@ class Home extends StatelessWidget {
       ),
     );
   }
-
-//   buildFriendsList() {
-//     return Container(
-//       height: 50.0,
-//       child: ListView.builder(
-//         primary: false,
-//         scrollDirection: Axis.horizontal,
-//         shrinkWrap: true,
-//         itemCount: friends == null ? 0 : friends.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           String img = friends[index];
-
-//           return Padding(
-//             padding: EdgeInsets.only(right: 5.0),
-//             child: CircleAvatar(
-//               backgroundImage: AssetImage(
-//                 img,
-//               ),
-//               radius: 25.0,
-//             ),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
 }

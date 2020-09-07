@@ -74,6 +74,8 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - path_provider (0.0.1):
+    - Flutter
   - PromisesObjC (1.2.10)
   - sensors (0.0.1):
     - Flutter
@@ -83,6 +85,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sensors (from `.symlinks/plugins/sensors/ios`)
 
 SPEC REPOS:
@@ -108,6 +111,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
   sensors:
     :path: ".symlinks/plugins/sensors/ios"
 
@@ -126,6 +131,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: e85fb700c9b027079ce182c3d08e12e0f9618bb4
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   sensors: 84eb7a30e47a649e4172b71d6e81be614c280336
 
