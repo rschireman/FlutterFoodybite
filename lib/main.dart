@@ -3,7 +3,6 @@ import 'package:flutter_foodybite/screens/main_screen.dart';
 import 'package:flutter_foodybite/util/const.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:shake/shake.dart';
-import 'package:geolocator/geolocator.dart';
 
 void main() async {
   runApp(MyApp());
