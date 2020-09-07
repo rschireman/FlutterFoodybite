@@ -42,22 +42,11 @@ class Home extends StatelessWidget {
             fontWeight: FontWeight.w800,
           ),
         ),
-        FlatButton(
-          child: Text(
-            "See all (9)",
-            style: TextStyle(
-              color: Theme.of(context).accentColor,
-            ),
-          ),
+        IconButton(
+          tooltip: 'Refresh',
+          icon: Icon(Icons.refresh),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return Trending();
-                },
-              ),
-            );
+            print("Refresh");
           },
         ),
       ],
