@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_foodybite/screens/trending.dart';
 import 'package:flutter_foodybite/util/categories.dart';
-import 'package:flutter_foodybite/util/friends.dart';
+
 import 'package:flutter_foodybite/util/restaurants.dart';
 import 'package:flutter_foodybite/widgets/category_item.dart';
 import 'package:flutter_foodybite/widgets/search_card.dart';
