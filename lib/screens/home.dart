@@ -4,6 +4,8 @@ import 'package:flutter_foodybite/util/categories.dart';
 import 'package:flutter_foodybite/util/restaurants.dart';
 import 'package:flutter_foodybite/widgets/category_item.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
+import '../util/YelpAPI.dart';
+import 'dart:convert';
 
 class Home extends StatelessWidget {
   @override
@@ -25,6 +27,20 @@ class Home extends StatelessWidget {
             SizedBox(height: 10.0),
             buildCategoryList(context),
             SizedBox(height: 20.0),
+            RaisedButton(onPressed: () async {
+              var listofRestaurants =
+                  await getListofRestaurants(baseurl, radius);
+
+              Map<String, dynamic> decodedList =
+                  await jsonDecode(listofRestaurants);
+
+              var strippedList = decodedList['businesses'];
+
+              for (var restaurant in strippedList) {
+                // print(restaurant);
+                print(restaurant['name']);
+              }
+            })
           ],
         ),
       ),

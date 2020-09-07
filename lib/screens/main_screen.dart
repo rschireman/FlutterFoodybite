@@ -27,23 +27,7 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: onPageChanged,
         children: List.generate(5, (index) => Home()),
       ),
-      bottomNavigationBar: BottomAppBar(
-        // child: Row(
-        //   mainAxisSize: MainAxisSize.max,
-        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //   children: <Widget>[
-        //     SizedBox(width: 7),
-        //     buildTabIcon(0),
-        //     buildTabIcon(1),
-        //     buildTabIcon(2),
-        //     buildTabIcon(3),
-        //     buildTabIcon(4),
-        //     SizedBox(width: 7),
-        //   ],
-        // ),
-        color: Theme.of(context).primaryColor,
-        shape: CircularNotchedRectangle(),
-      ),
+
       // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       // floatingActionButton: FloatingActionButton(
