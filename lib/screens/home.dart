@@ -35,7 +35,8 @@ class Home extends StatelessWidget {
                   Directory tempdir = await getTemporaryDirectory();
                   String tempdirPath = tempdir.path;
                   print(tempdirPath);
-                  final restarauntData = File('$tempdirPath/data.txt');
+                  final restarauntData =
+                      File('$tempdirPath/restaurant_data.txt');
                   final Map data = {};
 
                   var listofRestaurants =
