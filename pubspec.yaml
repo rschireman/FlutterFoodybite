@@ -26,6 +26,7 @@ dependencies:
   geolocator:
   shake: ^0.1.0
   firebase_admob:
+  path_provider:
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,8 @@ import 'package:flutter_foodybite/widgets/category_item.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/YelpAPI.dart';
 import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -27,23 +29,32 @@ class Home extends StatelessWidget {
             SizedBox(height: 10.0),
             buildCategoryList(context),
             SizedBox(height: 20.0),
-            RaisedButton(onPressed: () async {
-              var listofRestaurants =
-                  await getListofRestaurants(baseurl, radius);
+            RaisedButton(
+                child: Text("TEST"),
+                onPressed: () async {
+                  Directory tempdir = await getTemporaryDirectory();
+                  String tempdirPath = tempdir.path;
+                  final restarauntData = File('$tempdirPath/data.txt');
 
-              Map<String, dynamic> decodedList =
-                  await jsonDecode(listofRestaurants);
+                  var listofRestaurants =
+                      await getListofRestaurants(baseurl, radius);
 
-              var strippedList = decodedList['businesses'];
+                  Map<String, dynamic> decodedList =
+                      await jsonDecode(listofRestaurants);
 
-              for (var restaurant in strippedList) {
-                // print(restaurant);
-                print(restaurant['name']);
-              }
-              for (var image in strippedList) {
-                print(image['image_url']);
-              }
-            })
+                  var strippedList = decodedList['businesses'];
+
+                  for (var restaurant in strippedList) {
+                    print(restaurant['name']);
+                  }
+                  for (var image in strippedList) {
+                    print(image['image_url']);
+                  }
+                  for (var item in strippedList) {
+                    restarauntData
+                        .writeAsString(item['name'] + ',' + item['image_url']);
+                  }
+                })
           ],
         ),
       ),

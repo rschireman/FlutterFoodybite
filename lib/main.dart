@@ -42,9 +42,9 @@ class _MyAppState extends State<MyApp> {
         print("Shake Detected");
       },
     );
-    myBanner
-      ..load()
-      ..show(anchorType: AnchorType.bottom);
+    // myBanner
+    // ..load()
+    // ..show(anchorType: AnchorType.bottom);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: Constants.appName,
