@@ -51,10 +51,7 @@ class Home extends StatelessWidget {
                     data[restaurant['name']] = restaurant['image_url'];
                   }
                   print(data);
-
-                  data.forEach((key, value) {
-                    restarauntData.writeAsString(key + ': ' + value);
-                  });
+                  restarauntData.writeAsString(data.toString());
                 })
           ],
         ),
