@@ -12,26 +12,23 @@ randomNum() {
 }
 
 buildYelpRestaurantList() async {
+  int num = randomNum();
+  print("Random numer: " + num.toString());
   Directory tempdir = await getTemporaryDirectory();
   String tempdirPath = tempdir.path;
-  String filecontents =
+  var filecontents =
       await File('$tempdirPath/restaurant_data.txt').readAsString();
 
-  var decodedData = await jsonDecode(filecontents);
+  var decodedData = jsonDecode(filecontents);
+  print(decodedData[0]);
+  print(decodedData.runtimeType);
 
   return decodedData;
 }
 
-getRandomYelpRestaurant() async {
-  var locations = await buildYelpRestaurantList();
-}
-
 class ResultsRoute extends StatelessWidget {
-  int num = randomNum();
-  var results = getRandomYelpRestaurant();
   @override
   Widget build(BuildContext context) {
-    print(results);
     return Scaffold(
         appBar: AppBar(
           title: const Text("Results"),

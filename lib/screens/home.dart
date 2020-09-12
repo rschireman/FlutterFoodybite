@@ -61,8 +61,9 @@ class Home extends StatelessWidget {
                     }
                   }
                   String encodedData = jsonEncode(data.toString());
-                  restarauntData.writeAsString(encodedData.toString());
-                  buildYelpRestaurantList();
+                  restarauntData.writeAsString(encodedData);
+                  var results = await buildYelpRestaurantList();
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
