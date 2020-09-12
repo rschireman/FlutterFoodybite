@@ -8,6 +8,7 @@ import '../util/YelpAPI.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'results_screen.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -53,6 +54,11 @@ class Home extends StatelessWidget {
                   }
                   print(data);
                   restarauntData.writeAsString(data.toString());
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultsRoute(),
+                      ));
                 })
           ],
         ),
