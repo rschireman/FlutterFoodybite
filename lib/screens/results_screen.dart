@@ -13,20 +13,21 @@ class ResultsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Results"),
-      ),
-      body: Align(
-        alignment: Alignment.center,
-        child: Column(children: [
-          Text("$num"),
-          RaisedButton(
-              child: Text("Back"),
-              onPressed: () {
-                Navigator.pop(context);
-              })
-        ]),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("Results"),
+        ),
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Align(
+            alignment: Alignment.center,
+            child: Column(children: [
+              Text("$num"),
+              RaisedButton(
+                  child: Text("Back"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
+            ]),
+          ),
+        ]));
   }
 }
