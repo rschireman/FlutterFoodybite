@@ -52,8 +52,8 @@ class Home extends StatelessWidget {
                   print(indexRange);
                   for (int index = 0; index < indexRange.length;) {
                     for (var restaurant in strippedList) {
-                      data[restaurant['name']] = [
-                        index,
+                      data[index] = [
+                        data[restaurant['name']],
                         restaurant['image_url'],
                         restaurant['location']
                       ];
