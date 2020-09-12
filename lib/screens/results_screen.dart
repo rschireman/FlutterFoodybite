@@ -17,8 +17,7 @@ randomYelpRestaurant() async {
   String tempdirPath = tempdir.path;
   print(tempdirPath);
   var restarauntData = File('$tempdirPath/restaurant_data.txt');
-  final Map data = {};
-
+  Map data = {};
   var listofRestaurants = await getListofRestaurants(baseurl, radius);
 
   Map<String, dynamic> decodedList = await jsonDecode(listofRestaurants);
@@ -37,46 +36,44 @@ randomYelpRestaurant() async {
       index += 1;
     }
   }
-  print(data[num]);
+  var finaldata = await data[num];
+  print(finaldata);
   String encodedData = jsonEncode(data.toString());
   restarauntData.writeAsString(encodedData);
-  return data[num];
+
+  return finaldata;
 }
 
-// class ResultsRoute extends StatelessWidget {
-//   var result = randomYelpRestaurant();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           title: const Text("Results"),
-//         ),
-//         body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-//           Align(
-//             alignment: Alignment.center,
-//             child: Column(children: [
-//               SizedBox(
-//                 height: 20.0,
-//               ),
-//               Text('result'),
-//               RaisedButton(
-//                   child: Text("Back"),
-//                   onPressed: () {
-//                     Navigator.pop(context);
-//                   })
-//             ]),
-//           ),
-//         ]));
-//   }
-// }
-class ResultsRoute extends StatefulWidget {
-  @override
-  _ResultsRouteState createState() => _ResultsRouteState();
-}
-
-class _ResultsRouteState extends State<ResultsRoute> {
+class ResultsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Results"),
+        ),
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Align(
+            alignment: Alignment.center,
+            child: Column(children: [
+              SizedBox(
+                height: 20.0,
+              ),
+              FutureBuilder(
+                  future: randomYelpRestaurant(),
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data.toString());
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  }),
+              RaisedButton(
+                  child: Text("Back"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
+            ]),
+          ),
+        ]));
   }
 }
