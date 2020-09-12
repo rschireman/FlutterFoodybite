@@ -17,18 +17,21 @@ buildYelpRestaurantList() async {
   String filecontents =
       await File('$tempdirPath/restaurant_data.txt').readAsString();
 
-  var decodedData = jsonDecode(filecontents);
-  print(decodedData);
-  // List yelpRestaurants =
+  var decodedData = await jsonDecode(filecontents);
+
+  return decodedData;
+}
+
+getRandomYelpRestaurant() async {
+  var locations = await buildYelpRestaurantList();
 }
 
 class ResultsRoute extends StatelessWidget {
   int num = randomNum();
-  List locations = restaurants;
-
+  var results = getRandomYelpRestaurant();
   @override
   Widget build(BuildContext context) {
-    Map result = restaurants[num];
+    print(results);
     return Scaffold(
         appBar: AppBar(
           title: const Text("Results"),
@@ -41,7 +44,7 @@ class ResultsRoute extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              Text(result['title']),
+              Text("num"),
               RaisedButton(
                   child: Text("Back"),
                   onPressed: () {

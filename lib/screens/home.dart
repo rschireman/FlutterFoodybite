@@ -46,14 +46,14 @@ class Home extends StatelessWidget {
                       await jsonDecode(listofRestaurants);
 
                   var strippedList = decodedList['businesses'];
-                  print(strippedList.length.toString());
+
                   var indexRange =
                       Iterable<int>.generate(strippedList.length).toList();
-                  print(indexRange);
+
                   for (int index = 0; index < indexRange.length;) {
                     for (var restaurant in strippedList) {
                       data[index] = [
-                        data[restaurant['name']],
+                        restaurant['name'],
                         restaurant['image_url'],
                         restaurant['location']
                       ];
