@@ -9,7 +9,7 @@ const String authcode =
 int radius = 40000;
 
 Future getListofRestaurants(baseurl, radius) async {
-  print("Getting List of Destinations");
+  print("Getting List of Destinations...");
   Position position =
       await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
