@@ -112,3 +112,22 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+getRestaurantList() async {
+  Map data;
+  var listofRestaurants = await getListofRestaurants(baseurl, radius);
+  Map<String, dynamic> decodedList = await jsonDecode(listofRestaurants);
+  var strippedList = decodedList['businesses'];
+  var indexRange = Iterable<int>.generate(strippedList.length).toList();
+  for (int index = 0; index < indexRange.length;) {
+    for (var restaurant in strippedList) {
+      data[index] = [
+        restaurant['name'],
+        restaurant['image_url'],
+        restaurant['location']
+      ];
+      index += 1;
+    }
+  }
+  return data;
+}
