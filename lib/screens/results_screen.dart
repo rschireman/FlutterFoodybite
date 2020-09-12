@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../util/restaurants.dart';
 import 'dart:math';
+import 'home.dart';
 
 randomNum() {
   int randomNumber = new Random().nextInt(30);
@@ -8,15 +9,24 @@ randomNum() {
 }
 
 class ResultsRoute extends StatelessWidget {
-  int num = randomNum();
+  final int num = randomNum();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-      child: ListView(
-        children: [Text("$num")],
+      appBar: AppBar(
+        title: Text("Results"),
       ),
-    ));
+      body: Align(
+        alignment: Alignment.center,
+        child: Column(children: [
+          Text("$num"),
+          RaisedButton(
+              child: Text("Back"),
+              onPressed: () {
+                Navigator.pop(context);
+              })
+        ]),
+      ),
+    );
   }
 }
