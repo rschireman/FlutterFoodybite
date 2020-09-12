@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../util/restaurants.dart';
 import 'dart:math';
-import 'home.dart';
+import '../util/YelpAPI.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
@@ -11,44 +11,72 @@ randomNum() {
   return randomNumber;
 }
 
-buildYelpRestaurantList() async {
+randomYelpRestaurant() async {
   int num = randomNum();
-  print("Random numer: " + num.toString());
   Directory tempdir = await getTemporaryDirectory();
   String tempdirPath = tempdir.path;
-  var filecontents =
-      await File('$tempdirPath/restaurant_data.txt').readAsString();
+  print(tempdirPath);
+  var restarauntData = File('$tempdirPath/restaurant_data.txt');
+  final Map data = {};
 
-  var decodedData = jsonDecode(filecontents);
-  print(decodedData[0]);
-  print(decodedData.runtimeType);
+  var listofRestaurants = await getListofRestaurants(baseurl, radius);
 
-  return decodedData;
+  Map<String, dynamic> decodedList = await jsonDecode(listofRestaurants);
+
+  var strippedList = decodedList['businesses'];
+
+  var indexRange = Iterable<int>.generate(strippedList.length).toList();
+
+  for (int index = 0; index < indexRange.length;) {
+    for (var restaurant in strippedList) {
+      data[index] = [
+        restaurant['name'],
+        restaurant['image_url'],
+        restaurant['location']
+      ];
+      index += 1;
+    }
+  }
+  print(data[num]);
+  String encodedData = jsonEncode(data.toString());
+  restarauntData.writeAsString(encodedData);
+  return data[num];
 }
 
-class ResultsRoute extends StatelessWidget {
+// class ResultsRoute extends StatelessWidget {
+//   var result = randomYelpRestaurant();
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: const Text("Results"),
+//         ),
+//         body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+//           Align(
+//             alignment: Alignment.center,
+//             child: Column(children: [
+//               SizedBox(
+//                 height: 20.0,
+//               ),
+//               Text('result'),
+//               RaisedButton(
+//                   child: Text("Back"),
+//                   onPressed: () {
+//                     Navigator.pop(context);
+//                   })
+//             ]),
+//           ),
+//         ]));
+//   }
+// }
+class ResultsRoute extends StatefulWidget {
+  @override
+  _ResultsRouteState createState() => _ResultsRouteState();
+}
+
+class _ResultsRouteState extends State<ResultsRoute> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Results"),
-        ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Align(
-            alignment: Alignment.center,
-            child: Column(children: [
-              Text("$num"),
-              SizedBox(
-                height: 20.0,
-              ),
-              Text("num"),
-              RaisedButton(
-                  child: Text("Back"),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  })
-            ]),
-          ),
-        ]));
+    return Container();
   }
 }

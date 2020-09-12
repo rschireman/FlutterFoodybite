@@ -33,37 +33,6 @@ class Home extends StatelessWidget {
             RaisedButton(
                 child: Text("TEST"),
                 onPressed: () async {
-                  Directory tempdir = await getTemporaryDirectory();
-                  String tempdirPath = tempdir.path;
-                  print(tempdirPath);
-                  var restarauntData = File('$tempdirPath/restaurant_data.txt');
-                  final Map data = {};
-
-                  var listofRestaurants =
-                      await getListofRestaurants(baseurl, radius);
-
-                  Map<String, dynamic> decodedList =
-                      await jsonDecode(listofRestaurants);
-
-                  var strippedList = decodedList['businesses'];
-
-                  var indexRange =
-                      Iterable<int>.generate(strippedList.length).toList();
-
-                  for (int index = 0; index < indexRange.length;) {
-                    for (var restaurant in strippedList) {
-                      data[index] = [
-                        restaurant['name'],
-                        restaurant['image_url'],
-                        restaurant['location']
-                      ];
-                      index += 1;
-                    }
-                  }
-                  String encodedData = jsonEncode(data.toString());
-                  restarauntData.writeAsString(encodedData);
-                  var results = await buildYelpRestaurantList();
-
                   Navigator.push(
                       context,
                       MaterialPageRoute(
