@@ -125,7 +125,7 @@ class _SlideItemState extends State<SlideItem> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 5.0),
             ],
           ),
         ),

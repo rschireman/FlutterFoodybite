@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/restaurants.dart';
 import 'dart:math';
 import '../util/YelpAPI.dart';
@@ -49,32 +50,32 @@ class ResultsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Results"),
-        ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Align(
-            alignment: Alignment.center,
-            child: Column(children: [
-              SizedBox(
-                height: 20.0,
-              ),
-              FutureBuilder(
-                  future: randomYelpRestaurant(),
-                  builder: (context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data.toString());
-                    } else {
-                      return CircularProgressIndicator();
-                    }
-                  }),
-              RaisedButton(
-                  child: Text("Back"),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  })
-            ]),
+      appBar: AppBar(
+        title: const Text("Results"),
+      ),
+      body: SingleChildScrollView(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Align(
+          alignment: Alignment.center,
+          child: FutureBuilder(
+            future: randomYelpRestaurant(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return SlideItem(
+                    img: snapshot.data[1].toString(),
+                    title: snapshot.data[0].toString(),
+                    address: snapshot.data[2]['display_address']
+                        .toString()
+                        .replaceAll('[', '')
+                        .replaceAll(']', ''),
+                    rating: snapshot.data[3].toString());
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
           ),
-        ]));
+        ),
+      ])),
+    );
   }
 }
