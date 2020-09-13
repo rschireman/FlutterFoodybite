@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_foodybite/screens/trending.dart';
+
 import 'package:flutter_foodybite/util/categories.dart';
-import 'package:flutter_foodybite/util/restaurants.dart';
+// import 'package:flutter_foodybite/util/restaurants.dart';
 import 'package:flutter_foodybite/widgets/category_item.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/YelpAPI.dart';
 import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 import 'results_screen.dart';
 
 class Home extends StatelessWidget {
@@ -87,34 +85,47 @@ class Home extends StatelessWidget {
   }
 
   buildRestaurantList(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height / 2.4,
-      width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-        primary: false,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: restaurants == null ? 0 : restaurants.length,
-        itemBuilder: (BuildContext context, int index) {
-          Map restaurant = restaurants[index];
+    return FutureBuilder(
+        future: getListofRestaurantsYelp(),
+        builder: (BuildContext context, AsyncSnapshot futureRestaurantList) {
+          if (futureRestaurantList.connectionState == ConnectionState.done) {
+            return Container(
+              height: MediaQuery.of(context).size.height / 2.4,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: futureRestaurantList.data == null
+                    ? 0
+                    : futureRestaurantList.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Map restaurant = futureRestaurantList.data;
 
-          return Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: SlideItem(
-              img: restaurant["img"],
-              title: restaurant["title"],
-              address: restaurant["address"],
-              rating: restaurant["rating"],
-            ),
-          );
-        },
-      ),
-    );
+                  return Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: SlideItem(
+                      img: restaurant[index][1].toString(),
+                      title: restaurant[index][0].toString(),
+                      address: restaurant[index][2]['display_address']
+                          .toString()
+                          .replaceAll('[', '')
+                          .replaceAll(']', ''),
+                      rating: restaurant[index][3].toString(),
+                    ),
+                  );
+                },
+              ),
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }
 
-getRestaurantList() async {
-  Map data;
+getListofRestaurantsYelp() async {
+  Map data = {};
   var listofRestaurants = await getListofRestaurants(baseurl, radius);
   Map<String, dynamic> decodedList = await jsonDecode(listofRestaurants);
   var strippedList = decodedList['businesses'];
@@ -124,10 +135,13 @@ getRestaurantList() async {
       data[index] = [
         restaurant['name'],
         restaurant['image_url'],
-        restaurant['location']
+        restaurant['location'],
+        restaurant['rating']
       ];
       index += 1;
     }
   }
+  // print('Homepage data: ' + data.toString());
+
   return data;
 }

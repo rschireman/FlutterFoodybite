@@ -31,7 +31,8 @@ randomYelpRestaurant() async {
       data[index] = [
         restaurant['name'],
         restaurant['image_url'],
-        restaurant['location']
+        restaurant['location'],
+        restaurant['rating']
       ];
       index += 1;
     }
