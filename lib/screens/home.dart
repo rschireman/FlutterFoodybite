@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'results_screen.dart';
 import 'package:flutter_foodybite/main.dart';
 import 'package:shake/shake.dart';
+import 'package:flutter/cupertino.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
         print("Shake Detected");
         Navigator.push(
             context,
-            MaterialPageRoute(
+            CupertinoPageRoute(
               builder: (context) => ResultsRoute(),
             ));
       },
@@ -72,6 +73,7 @@ class Home extends StatelessWidget {
           icon: Icon(Icons.refresh),
           onPressed: () {
             print("Refresh");
+            buildRestaurantList(context);
           },
         ),
       ],

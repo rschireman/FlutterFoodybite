@@ -25,8 +25,8 @@ class _ResultsSlideItemState extends State<ResultsSlideItem> {
     return Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 1.0),
       child: Container(
-        height: MediaQuery.of(context).size.height / 2.9,
-        width: MediaQuery.of(context).size.width / 1.2,
+        height: MediaQuery.of(context).size.height / 2.3,
+        width: MediaQuery.of(context).size.width / 1.03,
         child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -125,7 +125,7 @@ class _ResultsSlideItemState extends State<ResultsSlideItem> {
                   ),
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 7.0),
             ],
           ),
         ),
