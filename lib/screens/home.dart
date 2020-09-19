@@ -7,6 +7,7 @@ import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/YelpAPI.dart';
 import 'dart:convert';
 import 'results_screen.dart';
+import 'package:flutter_foodybite/main.dart';
 
 class Home extends StatelessWidget {
   @override

@@ -3,6 +3,7 @@ import 'package:flutter_foodybite/screens/main_screen.dart';
 import 'package:flutter_foodybite/util/const.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:shake/shake.dart';
+import 'screens/results_screen.dart';
 
 void main() async {
   runApp(MyApp());
@@ -11,7 +12,7 @@ void main() async {
 }
 
 MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-  keywords: <String>['flutterio', 'beautiful apps'],
+  keywords: <String>['food', 'restaurants'],
   contentUrl: 'https://flutter.io',
   childDirected: false,
   testDevices: <String>[], // Android emulators are considered test devices
@@ -40,6 +41,11 @@ class _MyAppState extends State<MyApp> {
     ShakeDetector detector = ShakeDetector.autoStart(
       onPhoneShake: () {
         print("Shake Detected");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ResultsRoute(),
+            ));
       },
     );
     // myBanner
