@@ -28,6 +28,16 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Shake to Select"),
+        actions: [
+          IconButton(
+            tooltip: 'Refresh',
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              print("Refresh");
+              buildRestaurantList(context);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
@@ -67,14 +77,6 @@ class Home extends StatelessWidget {
             fontSize: 20.0,
             fontWeight: FontWeight.w800,
           ),
-        ),
-        IconButton(
-          tooltip: 'Refresh',
-          icon: Icon(Icons.refresh),
-          onPressed: () {
-            print("Refresh");
-            buildRestaurantList(context);
-          },
         ),
       ],
     );
