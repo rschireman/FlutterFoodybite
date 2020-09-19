@@ -38,16 +38,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    ShakeDetector detector = ShakeDetector.autoStart(
-      onPhoneShake: () {
-        print("Shake Detected");
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ResultsRoute(),
-            ));
-      },
-    );
     // myBanner
     // ..load()
     // ..show(anchorType: AnchorType.bottom);

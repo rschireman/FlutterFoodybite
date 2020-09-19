@@ -8,10 +8,22 @@ import '../util/YelpAPI.dart';
 import 'dart:convert';
 import 'results_screen.dart';
 import 'package:flutter_foodybite/main.dart';
+import 'package:shake/shake.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ShakeDetector detector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        print("Shake Detected");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ResultsRoute(),
+            ));
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Shake to Select"),

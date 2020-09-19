@@ -6,6 +6,7 @@ import 'dart:math';
 import '../util/YelpAPI.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import '../widgets/results_slide_item.dart';
 
 randomNum() {
   int randomNumber = new Random().nextInt(8);
@@ -61,7 +62,7 @@ class ResultsRoute extends StatelessWidget {
             future: randomYelpRestaurant(),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return SlideItem(
+                return ResultsSlideItem(
                     img: snapshot.data[1].toString(),
                     title: snapshot.data[0].toString(),
                     address: snapshot.data[2]['display_address']
