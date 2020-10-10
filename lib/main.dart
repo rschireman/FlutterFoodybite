@@ -14,7 +14,7 @@ void main() async {
 MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
   keywords: <String>['food', 'restaurants'],
   contentUrl: 'https://flutter.io',
-  childDirected: false,
+
   testDevices: <String>[], // Android emulators are considered test devices
 );
 
