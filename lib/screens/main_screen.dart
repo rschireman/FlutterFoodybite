@@ -27,16 +27,6 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: onPageChanged,
         children: List.generate(5, (index) => Home()),
       ),
-
-      // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   elevation: 10.0,
-      //   child: Icon(
-      //     Icons.add,
-      //   ),
-      //   onPressed: () => _pageController.jumpToPage(2),
-      // ),
     );
   }
 

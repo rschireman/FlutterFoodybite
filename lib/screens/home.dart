@@ -11,6 +11,8 @@ import 'package:flutter_foodybite/main.dart';
 import 'package:shake/shake.dart';
 import 'package:flutter/cupertino.dart';
 
+String category;
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,9 @@ class Home extends StatelessWidget {
         Navigator.push(
             context,
             CupertinoPageRoute(
-              builder: (context) => ResultsRoute(),
+              builder: (context) => ResultsRoute(
+                category: category,
+              ),
             ));
       },
     );
@@ -58,7 +62,9 @@ class Home extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ResultsRoute(),
+                        builder: (context) => ResultsRoute(
+                          category: category,
+                        ),
                       ));
                 })
           ],
@@ -94,7 +100,7 @@ class Home extends StatelessWidget {
           Map cat = categories[index];
           return new GestureDetector(
               onTap: () {
-                String category = cat['name'];
+                String category = cat['search'];
                 print(category);
               },
               child: CategoryItem(

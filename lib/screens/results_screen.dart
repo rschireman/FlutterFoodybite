@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_foodybite/widgets/slide_item.dart';
-import '../util/restaurants.dart';
+
 import 'dart:math';
 import '../util/YelpAPI.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,14 +12,15 @@ randomNum() {
   return randomNumber;
 }
 
-randomYelpRestaurant() async {
+randomYelpRestaurant(category) async {
   int num = randomNum();
   Directory tempdir = await getTemporaryDirectory();
   String tempdirPath = tempdir.path;
   print(tempdirPath);
   var restarauntData = File('$tempdirPath/restaurant_data.txt');
   Map data = {};
-  var listofRestaurants = await getListofRestaurants(baseurl, radius);
+  var listofRestaurants =
+      await getListofRestaurantsCategory(baseurl, radius, category);
 
   Map<String, dynamic> decodedList = await jsonDecode(listofRestaurants);
 
@@ -48,6 +48,9 @@ randomYelpRestaurant() async {
 }
 
 class ResultsRoute extends StatelessWidget {
+  final String category;
+  ResultsRoute({Key key, @required this.category}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,7 @@ class ResultsRoute extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: FutureBuilder(
-            future: randomYelpRestaurant(),
+            future: randomYelpRestaurant(category),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 return ResultsSlideItem(
