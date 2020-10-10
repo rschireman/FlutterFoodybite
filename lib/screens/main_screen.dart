@@ -61,29 +61,4 @@ class _MainScreenState extends State<MainScreen> {
       this._page = page;
     });
   }
-
-//   buildTabIcon(int index) {
-//     if (index == 2) {
-//       return IconButton(
-//         icon: Icon(
-//           icons[index],
-//           size: 24.0,
-//           color: Colors.transparent,
-//         ),
-//         onPressed: null,
-//       );
-//     } else {
-//       return IconButton(
-//         icon: Icon(
-//           icons[index],
-//           size: 24.0,
-//         ),
-//         color: _page == index
-//             ? Theme.of(context).accentColor
-//             : Theme.of(context).textTheme.caption.color,
-//         onPressed: () => _pageController.jumpToPage(index),
-//       );
-//     }
-//   }
-// }
 }

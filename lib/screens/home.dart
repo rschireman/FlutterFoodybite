@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_foodybite/util/categories.dart';
-// import 'package:flutter_foodybite/util/restaurants.dart';
+
 import 'package:flutter_foodybite/widgets/category_item.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/YelpAPI.dart';
@@ -92,10 +92,14 @@ class Home extends StatelessWidget {
         itemCount: categories == null ? 0 : categories.length,
         itemBuilder: (BuildContext context, int index) {
           Map cat = categories[index];
-
-          return CategoryItem(
-            cat: cat,
-          );
+          return new GestureDetector(
+              onTap: () {
+                String category = cat['name'];
+                print(category);
+              },
+              child: CategoryItem(
+                cat: cat,
+              ));
         },
       ),
     );
