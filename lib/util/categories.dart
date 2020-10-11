@@ -10,14 +10,14 @@ List categories = [
   },
   {
     "name": "Chinese",
-    "search": 'chinese',
+    "search": 'chinese, All',
     "color1": Color.fromARGB(100, 0, 0, 0),
     "color2": Color.fromARGB(100, 0, 0, 0),
     "img": "assets/food1.jpeg"
   },
   {
     "name": "Mexican",
-    "search": "mexican",
+    "search": "mexican, All",
     "color1": Color.fromARGB(100, 0, 0, 0),
     "color2": Color.fromARGB(100, 0, 0, 0),
     "img": "assets/food2.jpeg"
