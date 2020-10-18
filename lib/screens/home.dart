@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_foodybite/util/categories.dart';
 
-import 'package:flutter_foodybite/widgets/category_item.dart';
+import 'package:flutter_foodybite/widgets/category_item_stateful.dart';
 import 'package:flutter_foodybite/widgets/slide_item.dart';
 import '../util/YelpAPI.dart';
 import 'dart:convert';
 import 'results_screen.dart';
-import 'package:flutter_foodybite/main.dart';
+
 import 'package:shake/shake.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -172,7 +172,6 @@ getListofRestaurantsYelp() async {
       index += 1;
     }
   }
-  // print('Homepage data: ' + data.toString());
 
   return data;
 }
