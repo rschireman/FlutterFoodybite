@@ -14,6 +14,7 @@ class _CategoryItemState extends State<CategoryItem> {
   _CategoryItemState({this.cat});
   @override
   Widget build(BuildContext context) {
+    print(cat);
     return Padding(
       padding: EdgeInsets.only(right: 10.0),
       child: ClipRRect(

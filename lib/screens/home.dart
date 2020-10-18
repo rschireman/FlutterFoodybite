@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
             tooltip: 'Refresh',
             icon: Icon(Icons.refresh),
             onPressed: () {
+              setState(() {});
               print("Refresh");
               buildRestaurantList(context);
             },
