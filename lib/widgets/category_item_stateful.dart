@@ -3,18 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatefulWidget {
-  final Map cat;
+  Map cat;
   CategoryItem({Key key, @required this.cat}) : super(key: key);
   _CategoryItemState createState() => _CategoryItemState(cat: cat);
 }
 
 class _CategoryItemState extends State<CategoryItem> {
   Map cat;
-
   _CategoryItemState({this.cat});
   @override
   Widget build(BuildContext context) {
-    print(cat);
     return Padding(
       padding: EdgeInsets.only(right: 10.0),
       child: ClipRRect(
